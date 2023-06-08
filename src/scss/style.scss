@@ -1,1 +1,37 @@
-@import "bootstrap/scss/bootstrap";
+// @import 'bootstrap/scss/bootstrap';
+@import 'global/colors';
+@import 'components/menu';
+
+:root{
+  --bgColorMenu : #272727;
+  --duration: .7s; 
+}
+
+#lang-btn {
+  svg {
+    vertical-align: 0;
+  }
+}
+
+body {
+  background-color: var(--dark-bg-color);
+  color: var(--text-light-color);
+}
+
+i {
+  color: var(--text-light-color);
+  transition: 0.3s;
+  &:hover {
+    color: #ccc;
+  }
+}
+
+#lang-btn {
+  svg {
+    fill: var(--text-light-color);
+    transition: 0.3s;
+    &:hover {
+      fill: #ccc;
+    }
+  }
+}
