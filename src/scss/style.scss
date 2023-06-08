@@ -16,6 +16,7 @@
 body {
   background-color: var(--dark-bg-color);
   color: var(--text-light-color);
+  scroll-behavior: smooth;
 }
 
 i {
@@ -33,5 +34,42 @@ i {
     &:hover {
       fill: #ccc;
     }
+  }
+}
+
+header{
+  height: 70vh;
+  aside{
+
+  }
+  #header-intro{
+    p{
+   
+      &:nth-of-type(1){
+        font-size: 1rem;
+      }
+      &:nth-of-type(2){
+        font-size: 1.4rem;
+      }
+    }
+    #header-title{
+      font-size: 3.5rem;
+    }
+    #cv-btn{
+      background-color: var(--main-btn-bg-color);
+      padding: 5px 10px;
+      color: var(--main-btn-txt-color);
+      transition: .3s;
+      &:hover{
+        background-color: var(--main-btn-bg-hover-color);
+      }
+    }
+  }
+  #header-img{
+  }
+  #scroll-btn{
+    width: initial;
+    color: var(--text-light-color);
+    
   }
 }
