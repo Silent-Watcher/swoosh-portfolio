@@ -91,24 +91,26 @@
               <p class="text-center mt-5" id="typewriter">...</p>
               <a href="Resume.docx.pdf" download id="cv-btn" class="align-self-center border-0 rounded mt-5 text-decoration-none">Download CV</a>
             </section>
-            <section class="col-12 col-md-5">
+            <section class="col-12  d-md-block col-md-5">
               <figure id="header-img">
                 <img class="img-fluid" loading="lazy" src="ai.gif" alt="AI robot">
               </figure>
             </section>
-            <a href="#about-me-title" id="scroll-btn" class="text-decoration-none p-0 d-flex flex-column justify-content-center align-items-center position-absolute bottom-0 start-50 translate-middle-x border-0 bg-transparent"><lord-icon src="https://cdn.lordicon.com/wtfdpwey.json" trigger="loop" colors="primary:#5c86ff,secondary:#3c67e9" style="width:50px;height:50px">
-            </lord-icon>scroll</a>
+            <section class="col-12"><a href="#about-me-title" id="scroll-btn" class="text-decoration-none p-0 d-flex flex-column justify-content-center align-items-center position-absolute bottom-0 start-50 translate-middle-x border-0 bg-transparent"><lord-icon src="https://cdn.lordicon.com/wtfdpwey.json" trigger="loop" colors="primary:#5c86ff,secondary:#3c67e9" style="width:50px;height:50px">
+            </lord-icon>scroll</a></section>
         </header>
       </div>
     </div>
      <!-- header section end -->
-     <div class="container-fluid">
+     <div class="container-fluid" id="main-wrapper">
       <div class="container">
         <main>
-          <h2 class="text-center" id="about-me-title">About Me</h2>
+          <div class="row">
+            <h2 class="text-center col-12" id="about-me-title">About Me</h2>
+          </div>
           <div class="row" id="about-me-detail">
-            <section class="col text-center d-flex align-items-center flex-column" id="interests">
-              <figure><img id="avatar" class="rounded-circle img-fluid w-50" src="./male_avatar.png" alt="Soroush hosseini"></figure>
+            <section class="col-12 col-lg-6 text-center d-flex align-items-center flex-column" id="interests">
+              <figure><img loading="lazy" id="avatar" class="rounded-circle img-fluid w-50" src="./male_avatar.png" alt="Soroush hosseini"></figure>
               <h3 class="mt-4" id="interests-title">Interests</h3>
               <ul id="interest-list" class="ps-0">
                 <li>Machine Learning</li>
@@ -119,7 +121,7 @@
                 <li>Signal Processing</li>
               </ul>
             </section>
-            <section class="col text-center position-relative" id="skills">
+            <section class="col-12 col-lg-6 text-center position-relative" id="skills">
               <h3 id="skills-title" class="mb-5">Skills & Tools</h3>
               <ul class='tags-cloud mt-5'>
                 <li class='tag'><span class='wrap'>Python</span></li>
@@ -143,6 +145,13 @@
             </ul>
             </section>
          
+          </div>
+          <div class="row" id="awards-section">
+              <h2 class="text-center">Awards</h2>
+              <blockquote class="text-center mt-3 text-secondary">
+                <q>Success is not final; failure is not fatal: It is the courage to continue that counts</q>
+              </blockquote>
+
           </div>
         </main> 
       </div>
