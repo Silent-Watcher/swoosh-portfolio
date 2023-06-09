@@ -256,8 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
   main();
 });
 
-
-// carousel 
+// carousel
 var carousel = document.querySelector('.carousel');
 var carouselPivot = carousel.querySelector('.carousel-pivot');
 
@@ -269,12 +268,17 @@ var carouselIsDragging = false;
 var carouselDragPosition;
 
 function start() {
-   var items = carouselPivot.children;
-   var arc = 360 / items.length;
-   for(var i = 0; i<items.length; i++) {
-     var item = items[i];
-     item.style.transform = 'translate3d(-50%, -50%, 0) rotateY(' + (i * arc) + 'deg) translateZ(' + (carouselRadius * 2) + 'px)'
-   }
+  var items = carouselPivot.children;
+  var arc = 360 / items.length;
+  for (var i = 0; i < items.length; i++) {
+    var item = items[i];
+    item.style.transform =
+      'translate3d(-50%, -50%, 0) rotateY(' +
+      i * arc +
+      'deg) translateZ(' +
+      carouselRadius * 2 +
+      'px)';
+  }
 }
 
 function dragStart(position) {
@@ -284,8 +288,10 @@ function dragStart(position) {
 }
 
 function dragMove(position) {
-    carouselVelocity = Math.atan2(position.x - carouselDragPosition, carouselRadius * 2) * 180 / Math.PI;
-    carouselDragPosition = position.x;
+  carouselVelocity =
+    (Math.atan2(position.x - carouselDragPosition, carouselRadius * 2) * 180) /
+    Math.PI;
+  carouselDragPosition = position.x;
 }
 
 function dragEnd(position) {
@@ -294,27 +300,35 @@ function dragEnd(position) {
 
 function update() {
   carouselRotation += carouselVelocity;
-  
-  if(!carouselIsDragging) {
+
+  if (!carouselIsDragging) {
     carouselVelocity *= 0.95;
   }
-  
+
   carouselTilt += (carouselVelocity * 0.1 - carouselTilt) / 10;
-  
-  carouselPivot.style.transform = 'translateZ(-'+ carouselRadius * 2 +'px) rotateX(' + -carouselTilt + 'deg) rotateY(' + carouselRotation + 'deg) ';
+
+  carouselPivot.style.transform =
+    'translateZ(-' +
+    carouselRadius * 2 +
+    'px) rotateX(' +
+    -carouselTilt +
+    'deg) rotateY(' +
+    carouselRotation +
+    'deg) ';
 }
 
-(function(){
-  var location = function(evt) {
-    var t1 = evt.touches, t2 = evt.changedTouches;
+(function () {
+  var location = function (evt) {
+    var t1 = evt.touches,
+      t2 = evt.changedTouches;
     var s = (t1 && t1[0]) || (t2 && t2[0]) || evt;
-    return {x:s.pageX, y:s.pageY};
+    return { x: s.pageX, y: s.pageY };
   };
-  var prevent = function(evt) {
+  var prevent = function (evt) {
     evt.preventDefault();
   };
-  var handler = function(evt) {
-    switch(evt.type) {
+  var handler = function (evt) {
+    switch (evt.type) {
       case 'mousedown':
         add(document, ['mousemove', 'mouseup']);
       case 'mousedown':
@@ -324,7 +338,7 @@ function update() {
         break;
       case 'mousemove':
       case 'touchmove':
-        dragMove(location(evt));        
+        dragMove(location(evt));
         break;
       case 'mouseup':
         remove(document, ['mousemove', 'mouseup']);
@@ -335,27 +349,45 @@ function update() {
         break;
     }
   };
-  var add = function(target, events) {
-    for(var i = 0; i<events.length; i++) {
+  var add = function (target, events) {
+    for (var i = 0; i < events.length; i++) {
       target.addEventListener(events[i], handler);
     }
   };
-  var remove = function(target, events) {
-    for(var i = 0; i<events.length; i++) {
+  var remove = function (target, events) {
+    for (var i = 0; i < events.length; i++) {
       target.removeEventListener(events[i], handler);
     }
   };
- 
-  add(carousel, ['mousedown', 'touchstart', 'touchmove', 'touchend', 'touchcancel']);
-  carousel.ondragstart = function() { return false; };
+
+  add(carousel, [
+    'mousedown',
+    'touchstart',
+    'touchmove',
+    'touchend',
+    'touchcancel',
+  ]);
+  carousel.ondragstart = function () {
+    return false;
+  };
 })();
 
-(function() {
-  var timestamp = window.performance ? function(){return window.performance.now()/1000;} : function(){return new Date().getTime()/1000;};
-  var requestFrame = window.requestAnimationFrame || function(callback) {setTimeout(callback, 16);};
+(function () {
+  var timestamp = window.performance
+    ? function () {
+        return window.performance.now() / 1000;
+      }
+    : function () {
+        return new Date().getTime() / 1000;
+      };
+  var requestFrame =
+    window.requestAnimationFrame ||
+    function (callback) {
+      setTimeout(callback, 16);
+    };
   start();
   var time = timestamp();
-  var enterFrame = function() {
+  var enterFrame = function () {
     var now = timestamp();
     var delta = now - time;
     time = now;
@@ -381,3 +413,18 @@ tabs.forEach((tab) => {
     tab.classList.add('qualification__active');
   });
 });
+
+window.addEventListener('scroll', function () {
+  changeMenuStyleOnScroll();
+});
+
+
+function changeMenuStyleOnScroll(){
+  let scrollFromTop = document.documentElement.scrollTop > 0;
+  let nav = document.querySelector('nav');
+  let activeHeaderColor = getComputedStyle(
+   document.documentElement
+  ).getPropertyValue('--bg-header-menu-active');
+  if (scrollFromTop > 0) nav.style.backgroundColor = activeHeaderColor;
+  else nav.style.backgroundColor = 'transparent';
+}
