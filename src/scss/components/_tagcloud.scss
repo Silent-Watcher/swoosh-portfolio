@@ -1,50 +1,46 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
 
 @-webkit-keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-
 .tags-cloud {
-    // position: fixed;
-    position: absolute; 
-    top: calc(50% - 30vmin);
-    left: calc(50% - 30vmin);
-    height: 60vmin;
-    width: 60vmin;
-    list-style: none;
-    opacity: 0;
+  width: 420px;
+  height: 420px;
+  position: relative;
+  list-style: none;
+  opacity: 0;
 }
 
 .tags-cloud.-loaded {
-    -webkit-animation: fadeIn 1s ease-out forwards;
-            animation: fadeIn 1s ease-out forwards;
+  -webkit-animation: fadeIn 1s ease-out forwards;
+  animation: fadeIn 1s ease-out forwards;
 }
 
 .tags-cloud > .tag {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 4vmin;
-    font-weight: bold;
-    transition: transform .5s linear, opacity .5s linear;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 4vmin;
+  font-weight: bold;
+  transition: transform 0.5s linear, opacity 0.5s linear;
 }
 
 .tags-cloud > .tag > .wrap {
-    display: inline-block;
-    transform: translateX(-50%) translateY(-50%);
+  display: inline-block;
+  transform: translateX(-50%) translateY(-50%);
 }

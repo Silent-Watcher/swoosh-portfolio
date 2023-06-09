@@ -2,6 +2,8 @@
 @import 'global/colors';
 @import 'components/menu';
 @import 'components/tagcloud';
+@import 'components/carousel';
+@import 'components/qualification';
 
 :root {
   --duration: 0.7s;
@@ -84,12 +86,12 @@ header {
 }
 
 main {
-  margin-top: 150px !important;
+  // margin-top: 150px !important;
   #skills-title {
     font-size: 2rem;
   }
   #about-me-detail {
-    margin-top: 70px;
+    margin-top: 50px;
   }
   #avatar {
     margin-top: 20px;
@@ -112,7 +114,7 @@ main {
 }
 
 #awards-section {
-  margin-top: 140px;
+  // margin-top: 140px;
 }
 
 // @media screen and (max-width:767px) {
