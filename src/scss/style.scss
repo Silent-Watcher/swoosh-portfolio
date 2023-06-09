@@ -20,7 +20,7 @@ body {
   color: var(--text-light-color);
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 i {
@@ -70,7 +70,23 @@ header {
   }
 }
 
+nav {
+  transition: 0.3s;
+  padding: 10px;
+  background-color: #232323;
+  &.active-nav{
+    background-color: #272727;
+  }
+}
+
+
 .light {
+  nav{
+    background-color: #f5f5f5;
+    &.active-nav {
+      background-color: #ececec!important;
+    }
+  }
   background-color: #f5f5f5;
   color: #232323;
   #scroll-btn {
@@ -79,7 +95,7 @@ header {
     }
   }
   :is(.menu, .menu__border, #menu-wrapp, .carousel-item) {
-    background-color: #ececec;
+    background-color: #ececec !important;
   }
   .lang-icon {
     fill: #232323 !important;
@@ -157,10 +173,12 @@ main {
   }
 }
 
-nav {
-  transition: 0.3s;
-  padding: 10px;
-}
+
 #menu-wrapp {
   background-color: #272727;
+}
+
+
+#typewriter{
+  font-size: 2rem;
 }

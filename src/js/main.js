@@ -1,4 +1,5 @@
 'use strict';
+import Typewriter from 'typewriter-effect/dist/core';
 
 const menu = document.body.querySelector('.menu');
 const menuItems = menu.querySelectorAll('.menu__item');
@@ -415,24 +416,13 @@ tabs.forEach((tab) => {
 });
 
 function changeMenuStyleOnScroll() {
-  let scrollFromTop = document.documentElement.scrollTop > 0,
-    nav = document.querySelector('nav'),
-    activeHeaderColor;
-  if (document.body.classList.contains('light')) activeHeaderColor = '#ececec';
-  else activeHeaderColor = '#272727';
-  if (scrollFromTop > 0) nav.style.backgroundColor = activeHeaderColor;
-  else nav.style.backgroundColor = 'transparent';
+  let scrollFromTop = document.documentElement.scrollTop,
+    nav = document.querySelector('nav');
+  if (scrollFromTop > 0) nav.classList.add('active-nav');
+  else nav.classList.remove('active-nav');
 }
 
-window.addEventListener('scroll', () => {
-  changeMenuStyleOnScroll();
-});
-
-window.addEventListener('load', () => {
-  changeTheme();
-});
-
-function changeTheme(){
+function changeTheme() {
   const theme_btn = document.querySelector('#theme-btn');
   theme_btn.addEventListener('click', function () {
     const icon = this.firstElementChild;
@@ -445,3 +435,22 @@ function changeTheme(){
     }
   });
 }
+
+window.addEventListener('scroll', () => {
+  changeMenuStyleOnScroll();
+});
+
+window.addEventListener('load', () => {
+  changeTheme();
+  //   typing effect
+  new Typewriter('#typewriter', {
+    strings: [
+      'Data Specialist',
+      'ML Enthusiastic',
+      'Robots Lover',
+      'A Normal Human Being',
+    ],
+    autoStart: true,
+    loop: true,
+  });
+});

@@ -12,5 +12,7 @@
     "sass": "^1.63.2",
     "vite": "^4.3.9"
   },
-  "dependencies": {}
+  "dependencies": {
+    "typewriter-effect": "^2.20.1"
+  }
 }
