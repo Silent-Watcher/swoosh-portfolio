@@ -454,3 +454,11 @@ window.addEventListener('load', () => {
     loop: true,
   });
 });
+
+// dynamic tab change
+window.addEventListener('blur', function () {
+  this.document.title = '😣 ?!!';
+});
+window.addEventListener('focus', function () {
+  this.document.title = 'swoosh';
+});
