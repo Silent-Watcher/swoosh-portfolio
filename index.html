@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="welcome to my portfolio, My name is Soroush hosseini but you can call me Swoosh ">
     <title>Swoosh</title>
+    <link rel="preload" href="./scene.json" as="fetch">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="src/scss/style.scss" />
@@ -80,7 +81,7 @@
     <!-- header section start -->
     <div class="container-fluid">
       <div class="container">
-        <header class="row mt-5 align-items-center justify-content-center position-relative">
+        <header class="row mt-2 align-items-center justify-content-center position-relative">
             <aside class="col-12 col-md-2 d-flex flex-md-column justify-content-center align-items-center ">
               <button class="border-0 bg-transparent me-4 me-md-0"><i class='bx bxl-github fs-3'></i></button>
               <button class="border-0 bg-transparent mt-md-4"><i class='bx bxl-linkedin fs-3'></i></button>
@@ -105,9 +106,12 @@
      <!-- header section end -->
      <div class="container-fluid" id="main-wrapper">
       <div class="container mt-5">
+        <!-- main section start -->
         <main class="mt-5">
+           <!-- skills and tools start -->
           <div class="row">
             <h2 class="text-center col-12 mt-5" id="about-me-title">About Me</h2>
+            <span class="text-center text-secondary mt-2">Everything you need to know about me</span>
           </div>
           <div class="row" id="about-me-detail">
             <section class="col-12 col-lg-6 text-center d-flex align-items-center flex-column" id="interests">
@@ -145,13 +149,14 @@
             </ul>
             </section>
           </div>
+          <!-- skills and tools end -->
+          <!-- awards section start -->
           <div class="row  mt-5" id="awards-section">
               <h2 class="text-center  mt-5">Awards</h2>
               <blockquote class="text-center mt-3 text-secondary">
                 <q>The road to success and the road to failure are almost exactly the same.</q>
               </blockquote>
           </div>
-          <!-- awards section start -->
           <div class="row mt-5" id="awards">
             <div class="carousel col-12">
               <div class="carousel-pivot">
@@ -207,7 +212,7 @@
           <div class="row mt-5">
             <section class="col-12 mt-4">
               <!-- <section class="qualification section"></section> -->
-              <h3 class="text-center">Qualification</h3>
+              <h3 class="text-center mt-5">Qualification</h3>
               <span class="text-secondary mt-3 mb-5 d-block text-center">My personal journey</span>
                 <div class="qualification__tabs w-50 m-auto mb-5">
                   <button  data-target="#education" class="qualification__button qualification__active bg-transparent border-0">education</button>
@@ -307,11 +312,61 @@
             </section>
           </div>
           <!-- qualification section end -->
+          <!-- contact me section -->
+          <div class="row mt-5">
+            <h2 class="text-center" id="contact-me-title">Contact me</h2>
+          </div>
+          <div class="row mt-5" id="contact-me">
+              <section class="col-12 col-md-5 offset-md-1 " id="contact-form">
+                <form class="w-75 m-auto">
+                  <div class="mb-3">
+                    <label for="userName" class="form-label">name</label>
+                    <input
+                      type="text"
+                      class="form-control border-0"
+                      id="userName"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="userEmail" class="form-label"
+                      >Email address</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control border-0"
+                      id="userEmail"
+                      aria-describedby="emailHelp"
+                    />
+                    <div id="emailHelp" class="fs-6 text-secondary">
+                      We'll never share your email with anyone else.
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="emailMsg" class="form-label">Message</label>
+                    <textarea
+                      class="form-control border-0"
+                      id="emailMsg"
+                      cols="30"
+                      rows="10"
+                    ></textarea>
+                  </div>
+                  <div class="text-center">
+                    <button class="border-0 rounded" id="submit-btn">Submit</button>
+                  </div>
+                </form>
+              </section>
+              <section class="col-12 d-none d-md-flex col-md-5 text-center flex-column" >
+                <figure>
+                  <img class="img-fluid" loading="lazy" src="./ai2.gif" alt="ai robot getting selfie">
+                </figure>
+              </section>
+          </div>
+          <!-- contact me section -->
         </main> 
+        <!-- main section end -->
       </div>
      </div>
-     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </body>
   <script src="https://cdn.lordicon.com/bhenfmcm.js"></script>
   <script type="module" src="src/js/main.js"></script>
