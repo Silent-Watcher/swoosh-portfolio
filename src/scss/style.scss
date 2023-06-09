@@ -4,6 +4,17 @@
 @import 'components/tagcloud';
 @import 'components/carousel';
 @import 'components/qualification';
+@import 'components/cursor';
+
+.-color-blue{
+  color: var(--main-cursor-color);
+}
+.-color-yellow{
+  color: gold;
+}
+.-color-red{
+  color: crimson;
+}
 
 :root {
   --duration: 0.7s;

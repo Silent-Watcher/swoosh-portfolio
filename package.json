@@ -13,6 +13,8 @@
     "vite": "^4.3.9"
   },
   "dependencies": {
-    "typewriter-effect": "^2.20.1"
+    "typewriter-effect": "^2.20.1",
+    "gsap": "^3.11.5",
+    "jquery": "^3.6.4"
   }
 }

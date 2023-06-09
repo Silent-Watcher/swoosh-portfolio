@@ -1,5 +1,6 @@
 'use strict';
 import Typewriter from 'typewriter-effect/dist/core';
+import Cursor from './cursor.js';
 
 const menu = document.body.querySelector('.menu'),
   menuItems = menu.querySelectorAll('.menu__item'),
@@ -31,6 +32,16 @@ let _root = new WeakMap(),
   _updatePositions = new WeakSet(),
   _onMouseMove = new WeakSet(),
   _update = new WeakSet();
+
+
+// cursor
+const cursor = new Cursor({
+  container: 'body',
+  speed: 0.7, // animation speed
+  ease: 'expo.out', // gsap easing
+  visibleTimeout: 300,
+});
+cursor.setState('-color-blue');
 
 // menu
 function clickItem(item, index) {
