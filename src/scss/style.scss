@@ -5,6 +5,7 @@
 @import 'components/carousel';
 @import 'components/qualification';
 @import 'components/cursor';
+@import 'components/scrollbar';
 
 .-color-blue{
   color: var(--main-cursor-color);
@@ -97,6 +98,7 @@ nav {
     color: #ccc;
   }
 }
+
 
 .light {
   #logo{
