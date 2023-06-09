@@ -1,11 +1,38 @@
 'use strict';
 import Typewriter from 'typewriter-effect/dist/core';
 
-const menu = document.body.querySelector('.menu');
-const menuItems = menu.querySelectorAll('.menu__item');
-const menuBorder = menu.querySelector('.menu__border');
+const menu = document.body.querySelector('.menu'),
+  menuItems = menu.querySelectorAll('.menu__item'),
+  menuBorder = menu.querySelector('.menu__border');
+
 let activeItem = menu.querySelector('.active');
 
+let carousel = document.querySelector('.carousel');
+let carouselPivot = carousel.querySelector('.carousel-pivot');
+
+let carouselRadius = 200,
+  carouselRotation = 0,
+  carouselTilt = 0,
+  carouselVelocity = 10,
+  carouselIsDragging = false,
+  carouselDragPosition;
+
+let _points = new WeakMap();
+
+let _root = new WeakMap(),
+  _size = new WeakMap(),
+  _sphere = new WeakMap(),
+  _tags = new WeakMap(),
+  _rotationAxis = new WeakMap(),
+  _rotationAngle = new WeakMap(),
+  _rotationSpeed = new WeakMap(),
+  _frameRequestId = new WeakMap(),
+  _initEventListeners = new WeakSet(),
+  _updatePositions = new WeakSet(),
+  _onMouseMove = new WeakSet(),
+  _update = new WeakSet();
+
+// menu
 function clickItem(item, index) {
   menu.style.removeProperty('--timeOut');
 
@@ -28,17 +55,6 @@ function offsetMenuBorder(element, menuBorder) {
   menuBorder.style.transform = `translate3d(${left}, 0 , 0)`;
 }
 
-offsetMenuBorder(activeItem, menuBorder);
-
-menuItems.forEach((item, index) => {
-  item.addEventListener('click', () => clickItem(item, index));
-});
-
-window.addEventListener('resize', () => {
-  offsetMenuBorder(activeItem, menuBorder);
-  menu.style.setProperty('--timeOut', 'none');
-});
-
 // animated tag cloud
 function _classPrivateMethodGet(receiver, privateSet, fn) {
   if (!privateSet.has(receiver)) {
@@ -46,6 +62,7 @@ function _classPrivateMethodGet(receiver, privateSet, fn) {
   }
   return fn;
 }
+
 function _classPrivateFieldSet(receiver, privateMap, value) {
   let descriptor = privateMap.get(receiver);
   if (!descriptor) {
@@ -61,6 +78,7 @@ function _classPrivateFieldSet(receiver, privateMap, value) {
   }
   return value;
 }
+
 function _classPrivateFieldGet(receiver, privateMap) {
   let descriptor = privateMap.get(receiver);
   if (!descriptor) {
@@ -71,7 +89,7 @@ function _classPrivateFieldGet(receiver, privateMap) {
   }
   return descriptor.value;
 }
-let _points = new WeakMap();
+
 class FibonacciSphere {
   get points() {
     return _classPrivateFieldGet(this, _points);
@@ -94,18 +112,6 @@ class FibonacciSphere {
     }
   }
 }
-let _root = new WeakMap();
-let _size = new WeakMap();
-let _sphere = new WeakMap();
-let _tags = new WeakMap();
-let _rotationAxis = new WeakMap();
-let _rotationAngle = new WeakMap();
-let _rotationSpeed = new WeakMap();
-let _frameRequestId = new WeakMap();
-let _initEventListeners = new WeakSet();
-let _updatePositions = new WeakSet();
-let _onMouseMove = new WeakSet();
-let _update = new WeakSet();
 
 class TagsCloud {
   constructor(root) {
@@ -162,6 +168,7 @@ class TagsCloud {
     cancelAnimationFrame(_classPrivateFieldGet(this, _frameRequestId));
   }
 }
+
 let _initEventListeners2 = function _initEventListeners2() {
   window.addEventListener(
     'resize',
@@ -172,6 +179,7 @@ let _initEventListeners2 = function _initEventListeners2() {
     _classPrivateMethodGet(this, _onMouseMove, _onMouseMove2).bind(this)
   );
 };
+
 let _updatePositions2 = function _updatePositions2() {
   const sin = Math.sin(_classPrivateFieldGet(this, _rotationAngle));
   const cos = Math.cos(_classPrivateFieldGet(this, _rotationAngle));
@@ -221,6 +229,7 @@ let _updatePositions2 = function _updatePositions2() {
     _classPrivateFieldGet(this, _tags)[i].style.opacity = opacity;
   }
 };
+
 let _onMouseMove2 = function _onMouseMove2(e) {
   const rootRect = _classPrivateFieldGet(this, _root).getBoundingClientRect();
   const deltaX =
@@ -236,6 +245,7 @@ let _onMouseMove2 = function _onMouseMove2(e) {
   _classPrivateFieldSet(this, _rotationAxis, axis);
   _classPrivateFieldSet(this, _rotationSpeed, speed);
 };
+
 let _update2 = function _update2() {
   _classPrivateFieldSet(
     this,
@@ -253,20 +263,7 @@ function main() {
   cloud.start();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  main();
-});
-
-// carousel
-let carousel = document.querySelector('.carousel');
-let carouselPivot = carousel.querySelector('.carousel-pivot');
-
-let carouselRadius = 200;
-let carouselRotation = 0;
-let carouselTilt = 0;
-let carouselVelocity = 10;
-let carouselIsDragging = false;
-let carouselDragPosition;
+// carousel feature
 
 function start() {
   let items = carouselPivot.children;
@@ -441,8 +438,9 @@ window.addEventListener('scroll', () => {
 });
 
 window.addEventListener('load', () => {
+  // changing theme feature
   changeTheme();
-  //   typing effect
+  // typing effect
   new Typewriter('#typewriter', {
     strings: [
       'Data Specialist',
@@ -461,4 +459,20 @@ window.addEventListener('blur', function () {
 });
 window.addEventListener('focus', function () {
   this.document.title = 'swoosh';
+});
+
+// menu bar animation
+offsetMenuBorder(activeItem, menuBorder);
+
+menuItems.forEach((item, index) => {
+  item.addEventListener('click', () => clickItem(item, index));
+});
+
+window.addEventListener('resize', () => {
+  offsetMenuBorder(activeItem, menuBorder);
+  menu.style.setProperty('--timeOut', 'none');
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  main();
 });
