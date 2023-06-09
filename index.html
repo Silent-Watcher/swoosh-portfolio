@@ -19,23 +19,23 @@
       <div id="menu-wrapp" class="d-flex justify-content-center align-items-center fixed-bottom ">
         <menu class="menu">
     
-          <a href="#" class="menu__item active" style="--bgColorItem: #5c86ff;" >
+          <a section-link="home" href="#" class="menu__item active" style="--bgColorItem: #5c86ff;" >
             <i class='bx bxs-home'></i>
           </a>
 
-          <a href="#about-me-title" class="menu__item " style="--bgColorItem: #5c86ff;" >
+          <a section-link="about" href="#about-me-title" class="menu__item " style="--bgColorItem: #5c86ff;" >
             <i class='bx bxs-quote-right'></i>
           </a>
 
-          <a href="#awards-section" class="menu__item" style="--bgColorItem: #5c86ff;">
+          <a section-link="awards" href="#awards" class="menu__item" style="--bgColorItem: #5c86ff;">
             <i class='bx bxs-trophy'></i>
           </a>
 
-          <a href="#qualification-title" class="menu__item " style="--bgColorItem: #5c86ff;" >
+          <a section-link="qualification" href="#qualification" class="menu__item " style="--bgColorItem: #5c86ff;" >
             <i class='bx bx-briefcase'></i>
           </a>
           
-          <a href="#contact-me-title" class="menu__item" style="--bgColorItem: #5c86ff;" >
+          <a section-link="contact" href="#contact" class="menu__item" style="--bgColorItem: #5c86ff;" >
             <i class='bx bx-code-alt'></i>
           </a>
       
@@ -67,7 +67,7 @@
               <a href="https://www.linkedin.com/in/soroush-naghavi-094a82196/" target="_blank" class="border-0 bg-transparent mt-md-4"><i class='bx bxl-linkedin fs-3'></i></a>
             </aside>
             <section class="col-12 col-md-5 d-flex flex-column " id="header-intro">
-              <p class="text-align-left">Hi</p>
+              <p class="text-align-left" data-section="home">Hi</p>
               <p class="text-align-left">My name is </p>
               <h1 id="header-title"> Soroush hosseini</h1>
               <p class="text-center mt-3" id="typewriter">
@@ -91,11 +91,12 @@
         <!-- main section start -->
         <main class="mt-5">
            <!-- skills and tools start -->
-          <div class="row">
+          <div class="row" >
             <h2 class="text-center col-12 mt-5" id="about-me-title">About Me</h2>
-            <span class="text-center text-secondary mt-2">Everything you need to know about me</span>
+            <span class="text-center text-secondary mt-2" >Everything you need to know about me</span>
           </div>
-          <div class="row" id="about-me-detail">
+          <div data-section="about" ></div>
+          <div class="row" id="about-me-detail" >
             <section class="col-12 col-lg-6 text-center d-flex align-items-center flex-column" id="interests">
               <figure><img loading="lazy" id="avatar" class="rounded-circle img-fluid w-50" src="./male_avatar.png" alt="Soroush hosseini"></figure>
               <h3 class="mt-4" id="interests-title">Interests</h3>
@@ -133,16 +134,16 @@
           </div>
           <!-- skills and tools end -->
           <!-- awards section start -->
-          <div class="row  mt-5" id="awards-section">
+          <div class="row  mt-5" id="awards-section" >
               <h2 class="text-center  mt-5">Awards</h2>
               <blockquote class="text-center mt-3 text-secondary">
                 <q>The road to success and the road to failure are almost exactly the same.</q>
               </blockquote>
           </div>
-          <div class="row mt-5" id="awards">
+          <div class="row mt-5 pt-5" id="awards" data-section="awards" >
             <div class="carousel col-12">
               <div class="carousel-pivot">
-                <div class="carousel-item d-flex flex-column align-items-center justify-content-center">
+                <div class="carousel-item d-flex flex-column align-items-center justify-content-center" >
                     <p class="award-cup mb-0"><i class='bx bxs-trophy'></i></p>
                     <p class="award-place mb-0">1st Place</p>
                     <p class="award-desc mb-0">international robotics competition, RoboCup 2018, Montreal, Canada</p>
@@ -191,11 +192,11 @@
           </div>
           <!-- awards section end -->
           <!-- qualification section start -->
-          <div class="row mt-5">
+          <div class="row mt-5" >
             <section class="col-12 mt-4">
               <!-- <section class="qualification section"></section> -->
-              <h3 id="qualification-title" class="text-center mt-5">Qualification</h3>
-              <span class="text-secondary mt-3 mb-5 d-block text-center">My personal journey</span>
+              <h3 id="qualification qualification-title" class="text-center pt-5 mt-5">Qualification</h3>
+              <span data-section="qualification" class="text-secondary mt-3 mb-5 d-block text-center">My personal journey</span>
                 <div class="qualification__tabs w-50 m-auto mb-5">
                   <button  data-target="#education" class="qualification__button qualification__active bg-transparent border-0">education</button>
                     <button  data-target="#work" class="qualification__button bg-transparent border-0 ">work</button>
@@ -295,12 +296,12 @@
           </div>
           <!-- qualification section end -->
           <!-- contact me section -->
-          <div class="row mt-5">
+          <div class="row mt-5 pt-5" >
             <h2  class="text-center" id="contact-me-title">Contact me</h2>
           </div>
           <div class="row mt-5" id="contact-me">
               <section class="col-12 col-md-5 offset-md-1 " id="contact-form">
-                <form class="w-75 m-auto">
+                <form class="w-75 m-auto" id="contact" data-section="contact">
                   <div class="mb-3">
                     <label for="userName" class="form-label">name</label>
                     <input

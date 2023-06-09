@@ -476,3 +476,26 @@ window.addEventListener('resize', () => {
 document.addEventListener('DOMContentLoaded', () => {
   main();
 });
+
+
+let sections = document.querySelectorAll('[data-section]');
+
+const observer = new IntersectionObserver(function (entries) {
+  entries.forEach((entry) => {
+    let nav_link = document.querySelector(`[section-link=${entry.target.dataset.section}]`);
+    if (!entry.isIntersecting) {
+      nav_link.classList.remove('active');
+    }else{
+      nav_link.classList.add('active');
+      clickItem(nav_link);
+    }
+   
+    
+  });
+}, {threshold:0});
+
+sections.forEach(section=>{
+  observer.observe(section);
+})
+
+
