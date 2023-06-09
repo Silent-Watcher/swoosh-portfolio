@@ -1,6 +1,7 @@
 // @import 'bootstrap/scss/bootstrap';
 @import 'global/colors';
 @import 'components/menu';
+@import 'components/tagcloud';
 
 :root {
   --duration: 0.7s;
@@ -84,5 +85,34 @@ header {
   }
   i {
     color: #232323;
+  }
+}
+
+
+main{
+  margin-top: 150px!important;
+  #skills-title{
+    font-size: 2rem;
+  }
+  #about-me-detail{
+    margin-top: 70px;
+  }
+  #avatar{
+    margin-top: 20px;
+    background-color: var(--main-img-bg-color);
+  }
+  #interests-title{
+    font-size: 2.5rem;
+  }
+  #interest-list{
+    list-style: none;
+    > li {
+      margin: 10px 0;
+      transition: 0.3s;
+      &:hover{
+        transform: scale(1.1);
+        color: var(--secondary-txt-color);
+      }
+    }
   }
 }
