@@ -78,9 +78,19 @@ nav {
     background-color: #272727;
   }
 }
-
+#logo{
+  color: #f5f5f5;
+  cursor: pointer;
+  transition: .3s;
+  &:hover{
+    color: #ccc;
+  }
+}
 
 .light {
+  #logo{
+    color: #232323;
+  }
   nav{
     background-color: #f5f5f5;
     &.active-nav {
@@ -107,6 +117,9 @@ nav {
   textarea {
     color: initial !important;
     background-color: #fff !important;
+  }
+  .qualification__button{
+    color: #232323;
   }
 }
 
