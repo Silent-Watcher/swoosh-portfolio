@@ -17,7 +17,7 @@
   position: absolute;
   width: 300px;
   height: 280px;
-  background: #303030;
+  background: var(--carousel-item-bg);
   text-align: center;
   padding: 15px;
   .award-cup{

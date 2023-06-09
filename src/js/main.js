@@ -257,21 +257,21 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // carousel
-var carousel = document.querySelector('.carousel');
-var carouselPivot = carousel.querySelector('.carousel-pivot');
+let carousel = document.querySelector('.carousel');
+let carouselPivot = carousel.querySelector('.carousel-pivot');
 
-var carouselRadius = 200;
-var carouselRotation = 0;
-var carouselTilt = 0;
-var carouselVelocity = 10;
-var carouselIsDragging = false;
-var carouselDragPosition;
+let carouselRadius = 200;
+let carouselRotation = 0;
+let carouselTilt = 0;
+let carouselVelocity = 10;
+let carouselIsDragging = false;
+let carouselDragPosition;
 
 function start() {
-  var items = carouselPivot.children;
-  var arc = 360 / items.length;
-  for (var i = 0; i < items.length; i++) {
-    var item = items[i];
+  let items = carouselPivot.children;
+  let arc = 360 / items.length;
+  for (let i = 0; i < items.length; i++) {
+    let item = items[i];
     item.style.transform =
       'translate3d(-50%, -50%, 0) rotateY(' +
       i * arc +
@@ -318,16 +318,16 @@ function update() {
 }
 
 (function () {
-  var location = function (evt) {
-    var t1 = evt.touches,
+  let location = function (evt) {
+    let t1 = evt.touches,
       t2 = evt.changedTouches;
-    var s = (t1 && t1[0]) || (t2 && t2[0]) || evt;
+    let s = (t1 && t1[0]) || (t2 && t2[0]) || evt;
     return { x: s.pageX, y: s.pageY };
   };
-  var prevent = function (evt) {
+  let prevent = function (evt) {
     evt.preventDefault();
   };
-  var handler = function (evt) {
+  let handler = function (evt) {
     switch (evt.type) {
       case 'mousedown':
         add(document, ['mousemove', 'mouseup']);
@@ -349,13 +349,13 @@ function update() {
         break;
     }
   };
-  var add = function (target, events) {
-    for (var i = 0; i < events.length; i++) {
+  let add = function (target, events) {
+    for (let i = 0; i < events.length; i++) {
       target.addEventListener(events[i], handler);
     }
   };
-  var remove = function (target, events) {
-    for (var i = 0; i < events.length; i++) {
+  let remove = function (target, events) {
+    for (let i = 0; i < events.length; i++) {
       target.removeEventListener(events[i], handler);
     }
   };
@@ -373,23 +373,23 @@ function update() {
 })();
 
 (function () {
-  var timestamp = window.performance
+  let timestamp = window.performance
     ? function () {
         return window.performance.now() / 1000;
       }
     : function () {
         return new Date().getTime() / 1000;
       };
-  var requestFrame =
+  let requestFrame =
     window.requestAnimationFrame ||
     function (callback) {
       setTimeout(callback, 16);
     };
   start();
-  var time = timestamp();
-  var enterFrame = function () {
-    var now = timestamp();
-    var delta = now - time;
+  let time = timestamp();
+  let enterFrame = function () {
+    let now = timestamp();
+    let delta = now - time;
     time = now;
     update(delta);
     requestFrame(enterFrame);
@@ -414,17 +414,34 @@ tabs.forEach((tab) => {
   });
 });
 
-window.addEventListener('scroll', function () {
+function changeMenuStyleOnScroll() {
+  let scrollFromTop = document.documentElement.scrollTop > 0,
+    nav = document.querySelector('nav'),
+    activeHeaderColor;
+  if (document.body.classList.contains('light')) activeHeaderColor = '#ececec';
+  else activeHeaderColor = '#272727';
+  if (scrollFromTop > 0) nav.style.backgroundColor = activeHeaderColor;
+  else nav.style.backgroundColor = 'transparent';
+}
+
+window.addEventListener('scroll', () => {
   changeMenuStyleOnScroll();
 });
 
+window.addEventListener('load', () => {
+  changeTheme();
+});
 
-function changeMenuStyleOnScroll(){
-  let scrollFromTop = document.documentElement.scrollTop > 0;
-  let nav = document.querySelector('nav');
-  let activeHeaderColor = getComputedStyle(
-   document.documentElement
-  ).getPropertyValue('--bg-header-menu-active');
-  if (scrollFromTop > 0) nav.style.backgroundColor = activeHeaderColor;
-  else nav.style.backgroundColor = 'transparent';
+function changeTheme(){
+  const theme_btn = document.querySelector('#theme-btn');
+  theme_btn.addEventListener('click', function () {
+    const icon = this.firstElementChild;
+    if (icon.classList.contains('bx-sun')) {
+      icon.classList.replace('bx-sun', 'bx-moon');
+      document.body.classList.add('light');
+    } else {
+      icon.classList.replace('bx-moon', 'bx-sun');
+      document.body.classList.remove('light');
+    }
+  });
 }
