@@ -449,6 +449,7 @@ window.addEventListener('scroll', () => {
 });
 
 window.addEventListener('load', () => {
+  changeCopyrightDate();
   // changing theme feature
   changeTheme();
   // typing effect
@@ -510,3 +511,6 @@ sections.forEach(section=>{
 })
 
 
+function changeCopyrightDate(){
+  document.querySelector('date').innerHTML = new Date().getFullYear();
+}
