@@ -448,7 +448,7 @@ function changeTheme() {
 window.addEventListener('scroll', (event) => {
   let scrollFromTop = document.documentElement.scrollTop;
   changeMenuStyleOnScroll();
-  scroll_to_top_btn.classList[scrollFromTop > 200 ? 'add' : 'remove'];
+  scroll_to_top_btn.classList[scrollFromTop > 200 ? 'add' : 'remove']('appearButton');
 });
 
 window.addEventListener('load', (event) => {
