@@ -2,7 +2,7 @@
 import Typewriter from 'typewriter-effect/dist/core';
 import Cursor from './cursor.js';
 
-const scroll_to_top_btn =  document.getElementById('scroll_to_top_btn');
+const scroll_to_top_btn = document.getElementById('scroll_to_top_btn');
 
 const menu = document.body.querySelector('.menu'),
   menuItems = menu.querySelectorAll('.menu__item'),
@@ -34,7 +34,6 @@ let _root = new WeakMap(),
   _updatePositions = new WeakSet(),
   _onMouseMove = new WeakSet(),
   _update = new WeakSet();
-
 
 // cursor
 const cursor = new Cursor({
@@ -449,21 +448,16 @@ function changeTheme() {
 window.addEventListener('scroll', (event) => {
   let scrollFromTop = document.documentElement.scrollTop;
   changeMenuStyleOnScroll();
-  console.log( scroll_to_top_btn , scrollFromTop);
-  if(scrollFromTop > 200){
-    scroll_to_top_btn.classList.add('appearButton')
-  }else{
-    scroll_to_top_btn.classList.remove('appearButton')
-  }
+  scroll_to_top_btn.classList[scrollFromTop > 200 ? 'add' : 'remove'];
 });
 
 window.addEventListener('load', (event) => {
   // scroll to top button
-  scroll_to_top_btn.addEventListener('click',()=>{
-    document.documentElement.scrollTop = 0
-  })
-  // 
-  // 
+  scroll_to_top_btn.addEventListener('click', () => {
+    document.documentElement.scrollTop = 0;
+  });
+  //
+  //
   changeCopyrightDate();
   // changing theme feature
   changeTheme();
@@ -478,8 +472,6 @@ window.addEventListener('load', (event) => {
     autoStart: true,
     loop: true,
   });
-
-
 });
 
 // dynamic tab change
@@ -506,29 +498,29 @@ document.addEventListener('DOMContentLoaded', () => {
   main();
 });
 
-
 let sections = document.querySelectorAll('[data-section]');
 
-const observer = new IntersectionObserver(function (entries) {
-  entries.forEach((entry) => {
-    let nav_link = document.querySelector(`[section-link=${entry.target.dataset.section}]`);
-    if (!entry.isIntersecting) {
-      nav_link.classList.remove('active');
-    }else{
-      nav_link.classList.add('active');
-      clickItem(nav_link);
-    }
-   
-    
-  });
-}, {threshold:0});
+const observer = new IntersectionObserver(
+  function (entries) {
+    entries.forEach((entry) => {
+      let nav_link = document.querySelector(
+        `[section-link=${entry.target.dataset.section}]`
+      );
+      if (!entry.isIntersecting) {
+        nav_link.classList.remove('active');
+      } else {
+        nav_link.classList.add('active');
+        clickItem(nav_link);
+      }
+    });
+  },
+  { threshold: 0 }
+);
 
-sections.forEach(section=>{
+sections.forEach((section) => {
   observer.observe(section);
-})
+});
 
-
-function changeCopyrightDate(){
+function changeCopyrightDate() {
   document.querySelector('date').innerHTML = new Date().getFullYear();
 }
-
