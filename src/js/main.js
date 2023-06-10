@@ -2,6 +2,8 @@
 import Typewriter from 'typewriter-effect/dist/core';
 import Cursor from './cursor.js';
 
+const scroll_to_top_btn =  document.getElementById('scroll_to_top_btn');
+
 const menu = document.body.querySelector('.menu'),
   menuItems = menu.querySelectorAll('.menu__item'),
   menuBorder = menu.querySelector('.menu__border');
@@ -444,11 +446,24 @@ function changeTheme() {
   });
 }
 
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', (event) => {
+  let scrollFromTop = document.documentElement.scrollTop;
   changeMenuStyleOnScroll();
+  console.log( scroll_to_top_btn , scrollFromTop);
+  if(scrollFromTop > 200){
+    scroll_to_top_btn.classList.add('appearButton')
+  }else{
+    scroll_to_top_btn.classList.remove('appearButton')
+  }
 });
 
-window.addEventListener('load', () => {
+window.addEventListener('load', (event) => {
+  // scroll to top button
+  scroll_to_top_btn.addEventListener('click',()=>{
+    document.documentElement.scrollTop = 0
+  })
+  // 
+  // 
   changeCopyrightDate();
   // changing theme feature
   changeTheme();
@@ -463,6 +478,8 @@ window.addEventListener('load', () => {
     autoStart: true,
     loop: true,
   });
+
+
 });
 
 // dynamic tab change
@@ -514,3 +531,4 @@ sections.forEach(section=>{
 function changeCopyrightDate(){
   document.querySelector('date').innerHTML = new Date().getFullYear();
 }
+

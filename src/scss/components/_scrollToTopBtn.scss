@@ -1,0 +1,15 @@
+#scroll_to_top_btn{
+    position: fixed;
+    right: 20px;
+    bottom: -70px;  
+    width: 40px;
+    height: 40px;
+    background-color: #5c86ff;
+    color: #f5f5f5;
+    font-size: 1.6rem;
+    transition: .3s;
+}
+
+.appearButton{
+    bottom: 70px!important; 
+}
