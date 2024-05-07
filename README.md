@@ -1,4 +1,4 @@
-![swoosh portfolio]()
+![swoosh portfolio](https://github.com/Silent-Watcher/swoosh-portfolio/blob/master/.github/swoosh%20portfolio%20banner.png)
 
 # Swoosh Portfolio
 
